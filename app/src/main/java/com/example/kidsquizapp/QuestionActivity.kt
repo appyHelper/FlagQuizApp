@@ -18,8 +18,10 @@ class QuestionActivity : AppCompatActivity() ,SubmitOnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
-       // Log.d("question activity",QuestionRepository.getQuestions(this).toString())
-        database = FirebaseDatabase.getInstance().reference.child("Test Papers").child("GK").child("GK4Test4")
+
+        var testName : String= intent.getStringExtra("testName").toString()
+        Log.d("question activity",testName)
+        database = FirebaseDatabase.getInstance().reference.child("Test Papers").child(testName)
 //
       //  QuestionRepository.database = FirebaseDatabase.getInstance().reference.child("Test Papers").child("GK").child("GK4Test4")
 //        var user :JSONObject = database.child("tnpsc-b84c0-default-rtdb").get() as JSONObject
@@ -98,7 +100,7 @@ class QuestionActivity : AppCompatActivity() ,SubmitOnClickListener{
 
     override fun onSubmitClick() {
         Log.d("correct answer","sumbit")
-       // startActivity(Intent(this,ResultActivity::class.java).putExtra("score","hello"))
+        startActivity(Intent(this,ResultActivity::class.java).putExtra("score","hello"))
     }
 
 

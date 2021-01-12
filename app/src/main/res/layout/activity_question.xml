@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".QuestionActivity"
-    android:background="@color/seaBlue">
+    android:background="@drawable/blue_orange">
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/questionViewPager"
         android:layout_width="match_parent"

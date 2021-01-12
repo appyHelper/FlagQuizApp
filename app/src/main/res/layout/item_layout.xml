@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/ocean"
+    android:background="@drawable/blue_orange"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -74,14 +74,13 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginLeft="144dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/oval_button"
         android:gravity="center"
         android:padding="8dp"
         android:text="Submit"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radiogroup" />
+        app:layout_constraintTop_toTopOf="@id/radiogroup" />
 </androidx.constraintlayout.widget.ConstraintLayout>
