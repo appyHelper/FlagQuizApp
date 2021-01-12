@@ -11,9 +11,10 @@ import androidx.viewpager.widget.ViewPager
 import com.example.kidsquizapp.R
 import com.example.kidsquizapp.SubmitOnClickListener
 import com.example.kidsquizapp.data.model.Question
+import com.example.kidsquizapp.data.model.Question2
 import kotlinx.android.synthetic.main.item_layout.view.*
 
-class QuestionsAdapter constructor(val context:Context,val questionsArray:ArrayList<Question>,val  submitOnClickListener: SubmitOnClickListener?) : PagerAdapter(){
+class QuestionsAdapter constructor(val context:Context, val questionsArray:ArrayList<Question2>, val  submitOnClickListener: SubmitOnClickListener?) : PagerAdapter(){
    var submitOnClickListener1:SubmitOnClickListener1?=null
     private lateinit var layoutInflater: LayoutInflater
     lateinit var question:TextView

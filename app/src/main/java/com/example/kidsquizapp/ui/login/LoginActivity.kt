@@ -103,10 +103,10 @@ class LoginActivity : AppCompatActivity() {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
-        startActivity(Intent(this, QuestionActivity::class.java))
+        startActivity(Intent(this, DashboardActivity::class.java))
         Toast.makeText(
             applicationContext,
-            "$welcome Admin",
+            "$welcome Student",
             Toast.LENGTH_LONG
         ).show()
     }

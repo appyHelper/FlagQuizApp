@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KidsQuizApp</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">மின்னஞ்சல்</string>
+    <string name="prompt_password">கடவுச்சொல்</string>
+    <string name="action_sign_in">உள்நுழைக அல்லது பதிவு செய்யுங்கள்</string>
+    <string name="action_sign_in_short">உள்நுழைக</string>
+    <string name="welcome">"வரவேற்பு !"</string>
+    <string name="invalid_username">சரியான பயனர்பெயர் அல்ல</string>
+    <string name="invalid_password">கடவுச்சொல்> 5 எழுத்துகளாக இருக்க வேண்டும்</string>
+    <string name="login_failed">"உள்நுழைவு தோல்வியுற்றது"</string>
+</resources>

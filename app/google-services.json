@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "904416783437",
+    "project_id": "tnpsc-b84c0",
+    "storage_bucket": "tnpsc-b84c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904416783437:android:362795eb7fbee7675e8004",
+        "android_client_info": {
+          "package_name": "com.example.kidsquizapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904416783437-qhlbdslnn8koobkc9il5sb7ng1nqcn1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRy2YuVA-y6RvCWeB3rI-zWCzKVY8B8Ik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904416783437-qhlbdslnn8koobkc9il5sb7ng1nqcn1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
