@@ -24,7 +24,8 @@ class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
-        database = FirebaseDatabase.getInstance().reference.child("Student").child("987654")
+        var uid =intent.getStringExtra("uid")
+        database = FirebaseDatabase.getInstance().reference.child("Student").child(uid!!)
 
         database.addListenerForSingleValueEvent(object : ValueEventListener {
             var questionArrayList=ArrayList<Question2>()
@@ -62,7 +63,7 @@ class DashboardActivity : AppCompatActivity() {
                             Intent(
                                 this@DashboardActivity,
                                 QuestionActivity::class.java
-                            ).putExtra("testName", testName)
+                            ).putExtra("testName", testName).putExtra("uid",uid)
                         )
                     }
                 }else{
@@ -79,7 +80,7 @@ class DashboardActivity : AppCompatActivity() {
                                 Intent(
                                     this@DashboardActivity,
                                     LoginActivity::class.java
-                                )
+                                ).putExtra("uid",uid)
                             )
 
                         })

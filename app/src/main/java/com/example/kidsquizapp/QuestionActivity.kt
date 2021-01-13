@@ -14,14 +14,16 @@ import kotlinx.android.synthetic.main.activity_question.*
 class QuestionActivity : AppCompatActivity() ,SubmitOnClickListener{
  lateinit var questionsAdapter: QuestionsAdapter
     lateinit var database: DatabaseReference
+    lateinit var databaseMarks: DatabaseReference
  var submitOnClickListener: SubmitOnClickListener?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
-
+        var uid =intent.getStringExtra("uid").toString()
         var testName : String= intent.getStringExtra("testName").toString()
         Log.d("question activity",testName)
         database = FirebaseDatabase.getInstance().reference.child("Test Papers").child(testName)
+        databaseMarks = FirebaseDatabase.getInstance().reference.child("Student").child(uid)
 //
       //  QuestionRepository.database = FirebaseDatabase.getInstance().reference.child("Test Papers").child("GK").child("GK4Test4")
 //        var user :JSONObject = database.child("tnpsc-b84c0-default-rtdb").get() as JSONObject
@@ -51,7 +53,9 @@ class QuestionActivity : AppCompatActivity() ,SubmitOnClickListener{
                 questionsAdapter.setOnClickQuestionListener(object :QuestionsAdapter.SubmitOnClickListener1{
                     override fun onclick(answer:String,totalQuestion:String) {
                         Log.d("question",answer.toString())
-
+                        var markHashMap = HashMap<String,String>()
+                        markHashMap[testName]=answer
+                        databaseMarks.child("marks").push().setValue(markHashMap);
                         startActivity(Intent(this@QuestionActivity,ResultActivity::class.java).putExtra("score",answer.toString()).putExtra("total",totalQuestion.toString()))
                     }
                 })

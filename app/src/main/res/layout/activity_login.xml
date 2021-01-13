@@ -58,7 +58,6 @@
         android:padding="4dp"
         android:textColor="#ffff"
         android:background="@drawable/oval_button"
-        android:enabled="false"
         android:text="@string/action_sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
