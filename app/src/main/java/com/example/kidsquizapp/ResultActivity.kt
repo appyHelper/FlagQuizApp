@@ -11,7 +11,8 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
         var score=intent.getStringExtra("score")
-       textView3.text="Your Score $score /5"
+        var total=intent.getStringExtra("total")
+       textView3.text="Your Score $score / $total"
         logout.setOnClickListener {
             startActivity(Intent(this,LoginActivity::class.java))
         }

@@ -48,6 +48,13 @@ class QuestionActivity : AppCompatActivity() ,SubmitOnClickListener{
                 Log.d("Login","question arraylist ${questionArrayList}")
                 questionsAdapter= QuestionsAdapter(this@QuestionActivity,questionArrayList,submitOnClickListener)
                 questionViewPager.adapter=questionsAdapter
+                questionsAdapter.setOnClickQuestionListener(object :QuestionsAdapter.SubmitOnClickListener1{
+                    override fun onclick(answer:String,totalQuestion:String) {
+                        Log.d("question",answer.toString())
+
+                        startActivity(Intent(this@QuestionActivity,ResultActivity::class.java).putExtra("score",answer.toString()).putExtra("total",totalQuestion.toString()))
+                    }
+                })
             }
 
         })
@@ -56,45 +63,7 @@ class QuestionActivity : AppCompatActivity() ,SubmitOnClickListener{
 //            QuestionRepository.getQuestions(this).get(questionViewPager.currentItem)
 //            Log.d("correct answer",QuestionRepository.getQuestions(this).get(questionViewPager.currentItem).toString())
 //        }
-//        questionsAdapter.setOnClickQuestionListener(object :QuestionsAdapter.SubmitOnClickListener1{
-//            override fun onclick(answer:ArrayList<String>) {
-//              Log.d("adapter1","activity")
-//                var correctAnswers=0
-//              for(i in 0..answer.size-1){
-//                  when(i) {
-//                      0 -> {
-//                          if (answer[0].equals("Jawaharlal Nehru")) {
-//                              correctAnswers++
-//                          }
-//                      }
-//                      1 -> {
-//                          if (answer[1].equals("Arundhati Roy")) {
-//                              correctAnswers++
-//                          }
-//                      }
-//                      2 -> {
-//                          if (answer[2].equals("Third")) {
-//                              correctAnswers++
-//                          }
-//                      }
-//                      3 -> {
-//                          if (answer[3].equals("Issac Newton")) {
-//                              correctAnswers++
-//                          }
-//                      }
-//                      4 -> {
-//                          if (answer[4].equals("Group of stars")) {
-//                              correctAnswers++
-//                          }
-//                      }
-//                  }
-//
-//              }
-//
-//              Log.d("correct answer",correctAnswers.toString())
-//          startActivity(Intent(this@QuestionActivity,ResultActivity::class.java).putExtra("score",correctAnswers.toString()))
-//            }
-//        })
+
 
     }
 

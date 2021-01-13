@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.item_layout.view.*
 
 class QuestionsAdapter constructor(val context:Context, val questionsArray:ArrayList<Question2>, val  submitOnClickListener: SubmitOnClickListener?) : PagerAdapter(){
    var submitOnClickListener1:SubmitOnClickListener1?=null
+    var correctAnswerCount= 0
     private lateinit var layoutInflater: LayoutInflater
     lateinit var question:TextView
     lateinit var answer1:RadioButton
@@ -53,16 +54,54 @@ class QuestionsAdapter constructor(val context:Context, val questionsArray:Array
        var selectedId = radioGroup.getCheckedRadioButtonId()
        radioGroup.setOnCheckedChangeListener { group, checkedId ->
            answerArrayList.add(position,view.findViewById<RadioButton>(checkedId).text.toString())
-           Log.d("adapter", view.findViewById<RadioButton>(checkedId).text.toString())
+           Log.d("adapter answer", view.findViewById<RadioButton>(checkedId).text.toString())
+           Log.d("adapter correct answer", this.questionsArray[position].correctanswer.toString())
+          // Log.d("adap correct answer no1",this.questionsArray[position].correctanswer!!.equals(view.findViewById<RadioButton>(checkedId).text.toString()).toString())
+           if (this.questionsArray[position].correctanswer!!.equals("answer1")) {
+               Log.d("adap correct answer no1", correctAnswerCount.toString())
+               if (view.findViewById<RadioButton>(checkedId).text.toString().equals(this.questionsArray[position].answer1)) {
+                   correctAnswerCount++
+                   Log.d("adap correct answer no1", correctAnswerCount.toString())
+                   Log.d("adap correct answer no1", this.questionsArray[position].correctanswer!!.equals(this.questionsArray[position].answer1).toString())
+
+               }
+           }
+           if (this.questionsArray[position].correctanswer!!.equals("answer2")) {
+               Log.d("adap correct answer no2", correctAnswerCount.toString())
+               if (view.findViewById<RadioButton>(checkedId).text.toString().equals(this.questionsArray[position].answer2)) {
+                   correctAnswerCount++
+                   Log.d("adap correct answer no2", correctAnswerCount.toString())
+                   Log.d("adap correct answer no2", this.questionsArray[position].correctanswer!!.equals(this.questionsArray[position].answer2).toString())
+
+               }
+           }
+           if (this.questionsArray[position].correctanswer!!.equals("answer3")) {
+               Log.d("adap correct answer no3", correctAnswerCount.toString())
+               if (view.findViewById<RadioButton>(checkedId).text.toString().equals(this.questionsArray[position].answer3)) {
+                   correctAnswerCount++
+                   Log.d("adap correct answer no3", correctAnswerCount.toString())
+                   Log.d("adap correct answer no3", this.questionsArray[position].correctanswer!!.equals(this.questionsArray[position].answer3).toString())
+
+               }
+           }
+           if (this.questionsArray[position].correctanswer!!.equals("answer4")) {
+               Log.d("adap correct answer no4", correctAnswerCount.toString())
+               if (view.findViewById<RadioButton>(checkedId).text.toString().equals(this.questionsArray[position].answer4)) {
+                   correctAnswerCount++
+                   Log.d("adap correct answer no4", correctAnswerCount.toString())
+                   Log.d("adap correct answer no4", this.questionsArray[position].correctanswer!!.equals(this.questionsArray[position].answer4).toString())
+
+               }
+           }
            view.findViewById<RadioButton>(checkedId)
 
        }
         // find the radiobutton by returned id
-      Log.d("adapter",radioGroup.getCheckedRadioButtonId().toString())
+      //Log.d("adapter",radioGroup.getCheckedRadioButtonId().toString())
         view.submit.setOnClickListener {
-            Log.d("adapter",radioGroup.getCheckedRadioButtonId().toString())
+            Log.d("adapter",answerArrayList.toString())
 
-            submitOnClickListener1?.onclick(answerArrayList)
+            submitOnClickListener1?.onclick(correctAnswerCount.toString(),questionsArray.size.toString())
         }
 
         val vp=container as ViewPager
@@ -82,7 +121,7 @@ class QuestionsAdapter constructor(val context:Context, val questionsArray:Array
     }
 
     interface SubmitOnClickListener1{
-        fun onclick(answer:ArrayList<String>)
+        fun onclick(answer:String,totalQuestion:String)
     }
 
 }
