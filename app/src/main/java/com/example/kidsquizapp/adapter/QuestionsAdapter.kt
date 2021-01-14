@@ -14,7 +14,7 @@ import com.example.kidsquizapp.data.model.Question
 import com.example.kidsquizapp.data.model.Question2
 import kotlinx.android.synthetic.main.item_layout.view.*
 
-class QuestionsAdapter constructor(val context:Context, val questionsArray:ArrayList<Question2>, val  submitOnClickListener: SubmitOnClickListener?) : PagerAdapter(){
+class QuestionsAdapter constructor(val context:Context, val questionsArray:ArrayList<Question2>, val  submitOnClickListener: SubmitOnClickListener?,var review :Boolean) : PagerAdapter(){
    var submitOnClickListener1:SubmitOnClickListener1?=null
     var correctAnswerCount= 0
     private lateinit var layoutInflater: LayoutInflater
@@ -24,6 +24,7 @@ class QuestionsAdapter constructor(val context:Context, val questionsArray:Array
     lateinit var answer3:RadioButton
     lateinit var answer4:RadioButton
     lateinit var radioGroup:RadioGroup
+    lateinit var reviewText:TextView
     lateinit var submit:Button
     var answerArrayList=ArrayList<String>(10)
     override fun getCount(): Int {
@@ -39,6 +40,7 @@ class QuestionsAdapter constructor(val context:Context, val questionsArray:Array
         answer2=view.radioButton2
         answer3=view.radioButton3
         answer4=view.radioButton4
+        reviewText=view.correct_answer
         submit=view.submit
 
         question.text=this.questionsArray[position].question
@@ -46,10 +48,23 @@ class QuestionsAdapter constructor(val context:Context, val questionsArray:Array
         answer2.text=this.questionsArray[position].answer2
         answer3.text=this.questionsArray[position].answer3
         answer4.text=this.questionsArray[position].answer4
-
         if(position == questionsArray.size-1){
+            Log.d("adapter",position.toString())
+            Log.d("adapter",questionsArray.size.toString())
             view.submit.visibility= View.VISIBLE
         }
+        if (review){
+            Log.d("adapter",position.toString())
+            Log.d("adapter",questionsArray.size.toString())
+            reviewText.text=this.questionsArray[position].correctanswer
+            reviewText.visibility=View.VISIBLE
+            if(position == questionsArray.size-1) {
+                view.submit.visibility = View.VISIBLE
+                view.submit.text = "LOGOUT"
+            }
+        }
+
+
         // get selected radio button from radioGroup
        var selectedId = radioGroup.getCheckedRadioButtonId()
        radioGroup.setOnCheckedChangeListener { group, checkedId ->

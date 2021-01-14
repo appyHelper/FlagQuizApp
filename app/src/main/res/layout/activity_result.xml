@@ -28,6 +28,15 @@
         android:textSize="20sp"
       />
     <Button
+        android:id="@+id/review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/oval_button"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Review Answers"/>
+    <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

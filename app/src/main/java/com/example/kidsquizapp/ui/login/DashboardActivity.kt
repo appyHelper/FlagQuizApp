@@ -63,7 +63,7 @@ class DashboardActivity : AppCompatActivity() {
                             Intent(
                                 this@DashboardActivity,
                                 QuestionActivity::class.java
-                            ).putExtra("testName", testName).putExtra("uid",uid)
+                            ).putExtra("testName", testName).putExtra("uid",uid).putExtra("review",false)
                         )
                     }
                 }else{
@@ -80,7 +80,7 @@ class DashboardActivity : AppCompatActivity() {
                                 Intent(
                                     this@DashboardActivity,
                                     LoginActivity::class.java
-                                ).putExtra("uid",uid)
+                                ).putExtra("uid",uid).putExtra("review",false)
                             )
 
                         })

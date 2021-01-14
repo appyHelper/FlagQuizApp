@@ -8,6 +8,7 @@ import android.view.View
 import com.example.kidsquizapp.adapter.QuestionsAdapter
 import com.example.kidsquizapp.data.model.Question2
 import com.example.kidsquizapp.repository.QuestionRepository
+import com.example.kidsquizapp.ui.login.DataManager
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_question.*
 
@@ -16,9 +17,11 @@ class QuestionActivity : AppCompatActivity() ,SubmitOnClickListener{
     lateinit var database: DatabaseReference
     lateinit var databaseMarks: DatabaseReference
  var submitOnClickListener: SubmitOnClickListener?=null
+    var questionArrayList=ArrayList<Question2>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
+        var review =intent.getBooleanExtra("review",false)
         var uid =intent.getStringExtra("uid").toString()
         var testName : String= intent.getStringExtra("testName").toString()
         Log.d("question activity",testName)
@@ -30,7 +33,7 @@ class QuestionActivity : AppCompatActivity() ,SubmitOnClickListener{
 //        Log.d("Login Acitvity","user object $user.toString()")
 
        database.addListenerForSingleValueEvent(object : ValueEventListener {
-           var questionArrayList=ArrayList<Question2>()
+
             override fun onCancelled(error: DatabaseError) {
                 Log.d("Login Acitvity",error.message)
             }
@@ -48,8 +51,12 @@ class QuestionActivity : AppCompatActivity() ,SubmitOnClickListener{
                   questionArrayList.add(Question2( eachQuestionAnswer.get("answer1"),eachQuestionAnswer.get("answer2"),eachQuestionAnswer.get("answer3"),eachQuestionAnswer.get("answer4"),eachQuestionAnswer.get("correctanswer"),eachQuestionAnswer.get("question")))
                 }
                 Log.d("Login","question arraylist ${questionArrayList}")
-                questionsAdapter= QuestionsAdapter(this@QuestionActivity,questionArrayList,submitOnClickListener)
+                DataManager.setQuestionList("list",questionArrayList)
+                questionsAdapter= QuestionsAdapter(this@QuestionActivity,questionArrayList,submitOnClickListener,review)
                 questionViewPager.adapter=questionsAdapter
+                if (review){
+                    questionsAdapter.notifyDataSetChanged()
+                }
                 questionsAdapter.setOnClickQuestionListener(object :QuestionsAdapter.SubmitOnClickListener1{
                     override fun onclick(answer:String,totalQuestion:String) {
                         Log.d("question",answer.toString())
@@ -73,7 +80,8 @@ class QuestionActivity : AppCompatActivity() ,SubmitOnClickListener{
 
     override fun onSubmitClick() {
         Log.d("correct answer","sumbit")
-        startActivity(Intent(this,ResultActivity::class.java).putExtra("score","hello"))
+        questionArrayList.clear()
+        startActivity(Intent(this,ResultActivity::class.java).putExtra("score","hello").putParcelableArrayListExtra("questionList",questionArrayList))
     }
 
 

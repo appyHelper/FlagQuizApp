@@ -67,6 +67,16 @@
             android:textColor="#ffffff"
             android:textSize="20sp"
            />
+        <TextView
+            android:id="@+id/correct_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="answer0"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"/>
+
 
     </RadioGroup>
 
